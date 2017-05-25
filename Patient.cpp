@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
-using namespace std;
 #include "Patient.h"
+using namespace std;
+
 
 	// Default Constructor
 	// Description: Create a patient with a care card number of "0000000000". 
