@@ -1,4 +1,4 @@
-#pragma once
+//#pragma once
 #include <string>
 #include "Patient.h"
 using namespace std;
@@ -16,23 +16,36 @@ using namespace std;
 	// Description: Create a patient with the given care card number.
 	// Postcondition: If aCareCard does not have 10 digits, then care card is set to "0000000000".
 	//                All other data members set to "To be entered".
-	Patient::Patient(string aCareCard);
+	Patient::Patient(string aCareCard):
+						name("To be entered"), address("To be entered"), 
+						email("To be entered"), phone("To be entered")
+						{if(aCareCard.length()==10){ careCard= aCareCard;} else{careCard= "0000000000" ;}}
 
 	// Getters and setters
 	// Description: Returns patient's name.
-	string getName() const;
+	string Patient::getName() const{
+		return name;
+	}
 
 	// Description: Returns patient's address.alavergn
-	string getAddress() const;
+	string Patient::getAddress() const{
+		return address;
+	}
 
 	// Description: Returns patient's phone number.
-	string getPhone() const;
+	string Patient::getPhone() const{
+		return phone;
+	}
 
 	// Description: Returns patient's email.
-	string getEmail() const;
+	string Patient::getEmail() const{
+		return email;
+	}
 	
 	// Description: Returns patient's care card number.
-	string getCareCard() const;
+	string Patient::getCareCard() const {
+		return careCard; 
+	}
 
 	// Description: Sets the patient's name.
 	void setName(const string aName);
@@ -49,11 +62,11 @@ using namespace std;
 	// Overloaded Operators
 	// Description: Comparison operator. Compares "this" Patient object with "rhs" Patient object.
 	//              Returns true if both Patient objects have the same care card number.
-	bool operator==(const Patient & rhs);
+	//bool operator==(const Patient & rhs);
 	
 	// Description: Greater than operator. Compares "this" Patient object with "rhs" Patient object.
 	//              Returns true if the care card number of "this" Patient object is > the care card number of "rhs" Patient object.
-	bool operator>(const Patient & rhs);
+	//bool operator>(const Patient & rhs);
 	
 	// Description: Prints the content of "this" patient.
 	void printPatient( );
