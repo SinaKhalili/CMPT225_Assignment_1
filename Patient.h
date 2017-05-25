@@ -40,7 +40,7 @@ public:
 	// Description: Returns patient's name.
 	string getName() const;
 
-	// Description: Returns patient's address.
+	// Description: Returns patient's address.alavergn
 	string getAddress() const;
 
 	// Description: Returns patient's phone number.
