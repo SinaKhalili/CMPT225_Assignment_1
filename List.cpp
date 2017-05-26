@@ -1,12 +1,8 @@
 #pragma once
 #include <string>
-#include "Patient.h"
 #include "Patient.cpp"
 #include "List.h"
 using namespace std;
-
-//CODE IS MOSTLY UNTESTED, AND WILL CONTINUE TO BE UNTESTED UNTIL PATIENT.CPP IS COMPLETE
-//THERE ARE LIKELY BUGS
 
 List::List() : elementCount(0){};
 
