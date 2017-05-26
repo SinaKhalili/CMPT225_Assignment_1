@@ -69,8 +69,8 @@ using namespace std;
 	// Overloaded Operators
 	// Description: Comparison operator. Compares "this" Patient object with "rhs" Patient object.
 	//              Returns true if both Patient objects have the same care card number.
-	bool operator==(const Patient & rhs){
-		if(rhs.getCareCard == this.getCareCard){
+	bool Patient::operator==(const Patient &rhs){
+		if(rhs.getCareCard() == careCard){
 			return true; 
 		}
 		return false; 
@@ -78,8 +78,8 @@ using namespace std;
 	
 	// Description: Greater than operator. Compares "this" Patient object with "rhs" Patient object.
 	//              Returns true if the care card number of "this" Patient object is > the care card number of "rhs" Patient object.
-	bool operator>(const Patient & rhs){
-		if(this.getCareCard > rhs.getCareCard){
+	bool Patient::operator>(const Patient &rhs){
+		if(careCard > rhs.getCareCard()){
 			return true;
 		}
 		return false; 
@@ -87,10 +87,10 @@ using namespace std;
 	}
 	
 	// Description: Prints the content of "this" patient.
-	void printPatient( ){
-		cout << this.getName     << endl;
-		cout << this.getAddress  << endl;
-		cout << this.getPhone    << endl;
-		cout << this.getEmail    << endl;
-		cout << this.getCareCard << endl;
+	void Patient::printPatient( ){
+		cout << name    << endl;
+		cout << address  << endl;
+		cout << phone    << endl;
+		cout << email    << endl;
+		cout << careCard << endl;
 	}
