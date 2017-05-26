@@ -43,16 +43,11 @@ bool List::insert(const Patient& newElement){
 bool List::remove(const Patient& toBeRemoved){
 	for(int i = 0; i < elementCount; ++i){
 		if(elements[i] == toBeRemoved){ //If target element exists in the list
-			Patient newElements[MAX_ELEMENTS]; //Make a new array that holds all other elements
-			for(int ii = 0; ii < elementCount; ++ii){ 
-				if(ii != i){ //Add any element that's not toBeRemoved to the new array
-					newElements[ii] = elements[ii];
-				} else { //Skip removed element and continue the loop one past it
-					newElements[ii] = elements[ii + 1];
-					ii++; //Loop will increment this one more time so we won't add the same element twice
-				}
+			
+			for(int ii = i; ii < elementCount; ++ii){ 
+				elements[ii] = elements[ii + 1];
 			}
-			elements = &newElements[0];
+
 			elementCount--;
 			return true;
 		}
@@ -63,18 +58,17 @@ bool List::remove(const Patient& toBeRemoved){
 }
 
 // Description: Remove all elements.
-void removeAll(){
-	Patient newElements[MAX_ELEMENTS];
-	elements = newElements;
+void List::removeAll(){
+	elementCount = 0;
 }
 
 // Description: Search for target element.
 //              Returns a pointer to the element if found,
 //              otherwise, returns NULL.
-Patient* search(const Patient& target){
+Patient* List::search(const Patient& target){
 	for(int i = 0; i < elementCount; ++i){
-		if(*target == *elements[i]){
-			return elements[i];
+		if(elements[i] == target){
+			return &elements[i];
 		}
 	}
 
@@ -82,8 +76,8 @@ Patient* search(const Patient& target){
 }
 
 // Description: Prints all elements stored in List.
-void printList(){
+void List::printList(){
 	for(int i = 0; i < elementCount; ++i){
-		*elements[i].printPatient();
+		elements[i].printPatient();
 	}
 }
