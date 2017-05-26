@@ -1,4 +1,4 @@
-//#pragma once
+#pragma once
 #include <string>
 #include "Patient.h"
 using namespace std;
@@ -88,9 +88,5 @@ using namespace std;
 	
 	// Description: Prints the content of "this" patient.
 	void Patient::printPatient( ){
-		cout << name    << endl;
-		cout << address  << endl;
-		cout << phone    << endl;
-		cout << email    << endl;
-		cout << careCard << endl;
+		cout << careCard + ", " + "Patient: " + name + ", " + address + ", " +  phone + ", " + email  << endl;
 	}
