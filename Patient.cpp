@@ -48,25 +48,49 @@ using namespace std;
 	}
 
 	// Description: Sets the patient's name.
-	void setName(const string aName);
+	void Patient::setName(const string aName){
+		name = aName; 
+	}
 
 	// Description: Sets the patient's address.
-	void setAddress(const string anAddress);
-
+	void Patient::setAddress(const string anAddress){
+		address = anAddress;
+	}
 	// Description: Sets the patient's phone number.
-	void setPhone(const string aPhone);
+	void Patient::setPhone(const string aPhone){
+		phone = aPhone; 
+	}
 
 	// Description: Sets the patient's email.
-	void setEmail(const string anEmail);
+	void Patient::setEmail(const string anEmail){
+		email = anEmail;
+	}
 
 	// Overloaded Operators
 	// Description: Comparison operator. Compares "this" Patient object with "rhs" Patient object.
 	//              Returns true if both Patient objects have the same care card number.
-	//bool operator==(const Patient & rhs);
+	bool operator==(const Patient & rhs){
+		if(rhs.getCareCard == this.getCareCard){
+			return true; 
+		}
+		return false; 
+	}
 	
 	// Description: Greater than operator. Compares "this" Patient object with "rhs" Patient object.
 	//              Returns true if the care card number of "this" Patient object is > the care card number of "rhs" Patient object.
-	//bool operator>(const Patient & rhs);
+	bool operator>(const Patient & rhs){
+		if(this.getCareCard > rhs.getCareCard){
+			return true;
+		}
+		return false; 
+
+	}
 	
 	// Description: Prints the content of "this" patient.
-	void printPatient( );
+	void printPatient( ){
+		cout << this.getName     << endl;
+		cout << this.getAddress  << endl;
+		cout << this.getPhone    << endl;
+		cout << this.getEmail    << endl;
+		cout << this.getCareCard << endl;
+	}
