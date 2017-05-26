@@ -1,4 +1,4 @@
-/*hellohellohello
+/*
  * List.h
  * 
  * Class Description: List data collection ADT.
@@ -8,9 +8,6 @@
  *
  * Last modified on: May 2017
  * Author: AL
- * Heyo eyo eeyyyyyooooo
- * This is a second comment
- I HAVE SWAG, Y
  */
 
 #pragma once

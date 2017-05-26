@@ -12,5 +12,12 @@ List.o: List.h List.cpp
 Patient.o: Patient.h Patient.cpp
 	g++ -Wall -c Patient.cpp
 
+List.o: List.h List.cpp
+	g++ -Wall -c List.cpp
+
+Patient.o: Patient.h Patient.cpp
+	g++ -Wall -c Patient.cpp
+
+
 clean:
 	rm -f wicps *.o
