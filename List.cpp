@@ -1,13 +1,14 @@
 #pragma once
 #include <string>
 #include "Patient.h"
+#include "Patient.cpp"
 #include "List.h"
 using namespace std;
 
 //CODE IS MOSTLY UNTESTED, AND WILL CONTINUE TO BE UNTESTED UNTIL PATIENT.CPP IS COMPLETE
 //THERE ARE LIKELY BUGS
 
-List::List(){};
+List::List() : elementCount(0){};
 
 int List::getElementCount() const{
 	return elementCount;
@@ -19,9 +20,9 @@ int List::getElementCount() const{
 bool List::insert(const Patient& newElement){
 	//Precondition:
 
-	if(this.elementCount() < MAX_ELEMENTS){ //Check if available space exists
+	if(elementCount < MAX_ELEMENTS){ //Check if available space exists
 		for(int i = 0; i < elementCount; ++i){ //Check each element to make sure it is not already in data collection
-			if(*newElement == *elements[i]){//Element already exists in data collection
+			if(elements[i] == newElement){//Element already exists in data collection
 				return false; 
 			}
 		}
@@ -41,7 +42,7 @@ bool List::insert(const Patient& newElement){
 // Postcondition: toBeRemoved is removed and elementCount has been decremented.	
 bool List::remove(const Patient& toBeRemoved){
 	for(int i = 0; i < elementCount; ++i){
-		if(*toBeRomeved == *elements[i]){ //If target element exists in the list
+		if(elements[i] == toBeRemoved){ //If target element exists in the list
 			Patient newElements[MAX_ELEMENTS]; //Make a new array that holds all other elements
 			for(int ii = 0; ii < elementCount; ++ii){ 
 				if(ii != i){ //Add any element that's not toBeRemoved to the new array
@@ -51,7 +52,7 @@ bool List::remove(const Patient& toBeRemoved){
 					ii++; //Loop will increment this one more time so we won't add the same element twice
 				}
 			}
-			elements = newElements;
+			elements = &newElements[0];
 			elementCount--;
 			return true;
 		}
