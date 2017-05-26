@@ -4,13 +4,13 @@ wicps: WICPS.o List.o Patient.o
 	g++ -Wall -o -w wicps WICPS.o List.o Patient.o
 
 WICPS.o: WICPS.cpp List.h Patient.h
-	g++ -Wall -c -w WICPS.cpp
+	g++ -Wall -w -c WICPS.cpp
 
 List.o: List.h List.cpp
-	g++ -Wall -c -w List.cpp
+	g++ -Wall -w -c List.cpp
 
 Patient.o: Patient.h Patient.cpp
-	g++ -Wall -c -w Patient.cpp
+	g++ -Wall -w -c Patient.cpp
 
 clean:
-	rm -f -w wicps *.o
+	rm -f wicps *.o
