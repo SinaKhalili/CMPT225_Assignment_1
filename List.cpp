@@ -19,10 +19,12 @@ bool List::insert(const Patient& newElement){
 	if(elementCount < MAX_ELEMENTS){ //Check if available space exists
 		for(int i = 0; i < elementCount; ++i){ //Check each element to make sure it is not already in data collection
 			if(elements[i] == newElement){//Element already exists in data collection
+				cout << "Patient already exists in registry." << endl;
 				return false; 
 			}
 		}
 	} else { //List already contains max elements
+		cout << "Registry is full." << endl;
 		return false;
 	}
 
@@ -30,6 +32,7 @@ bool List::insert(const Patient& newElement){
 
 	elementCount++;
 	elements[elementCount] = newElement;
+	cout << "Patient has been added to the registry." << endl;
 
 	return true;
 }
@@ -73,7 +76,12 @@ Patient* List::search(const Patient& target){
 
 // Description: Prints all elements stored in List.
 void List::printList(){
-	for(int i = 0; i < elementCount; ++i){
-		elements[i].printPatient();
+	if(elementCount == 0){
+		cout << "No patients registered." << endl;
+	} else {
+
+		for(int i = 0; i < elementCount; ++i){
+			elements[i].printPatient();
+		}
 	}
 }
