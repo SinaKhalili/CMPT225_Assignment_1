@@ -31,7 +31,7 @@ void runRegistry(){
 		 
 	bool runMainMenu = true;
 	while(runMainMenu){
-		cout << "Please enter a main option. Enter 1 to see all options." << endl;
+		cout << endl << "Please enter a main option. Enter 1 to see all options." << endl;
 
 		const int MAIN_OPTIONS = 7;
 		int choice = getChoice(MAIN_OPTIONS);
@@ -101,7 +101,7 @@ int getChoice(int numberOfOptions){ //NEEDS TO BE COMPILED USING C++ 11 (g++ --s
 		if(legalOption){ //Make sure the user is repromted if needed, otherwise the loop ends
 			repromptNeeded = false;
 		} else {
-			cout << promptMessage << endl;
+			cout << endl << promptMessage << endl;
 		}
 	}
 
@@ -155,13 +155,13 @@ void displayPatients(List registry){
 void enterPatient(List& registry){
 
 	Patient newPatient(getLegalCareCard());
-	cout << "MADE A NEW PATIENT!" << endl;
 
 	bool editing = true;
 
 	while(editing){
 		cout << endl << "This is the new patient: " << endl;
 		newPatient.printPatient();
+		cout << endl;
 		cout << "Enter '1' to edit patient." << endl
 			 <<	"Enter '2' to add patient to registry." << endl
 			 <<	"Enter '3' to discard patient." << endl;
@@ -284,7 +284,7 @@ string getLegalCareCard(){
 	string prompt = "Please enter patient's care card number: ";
 
 	while(true){
-		cout << prompt << endl;
+		cout << endl << prompt;
 		cin >> userInput;
 
 		bool legalEntry = true;
