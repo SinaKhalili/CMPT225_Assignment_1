@@ -29,9 +29,8 @@ bool List::insert(const Patient& newElement){
 	}
 
 	//Postconditions:
-
-	elementCount++;
 	elements[elementCount] = newElement;
+	elementCount++;
 	cout << "Patient has been added to the registry." << endl;
 
 	return true;

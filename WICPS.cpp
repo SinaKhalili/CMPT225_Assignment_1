@@ -40,7 +40,7 @@ void runRegistry(){
 }
 
 void displayMainOptions(){
-	cout << "***OPTIONS FOR THE MAIN MENU***" << endl;
+	cout << endl << "***OPTIONS FOR THE MAIN MENU***" << endl;
 	cout << "1. Display these options again." << endl
 		 << "2. Display registered patients." << endl
 		 << "3. Enter a patient to the registry." << endl
@@ -155,6 +155,7 @@ void displayPatients(List registry){
 void enterPatient(List& registry){
 
 	Patient newPatient(getLegalCareCard());
+	cout << "MADE A NEW PATIENT!" << endl;
 
 	bool editing = true;
 
@@ -275,8 +276,7 @@ void displayEditOptions(){
 		 << "4. Edit patient's address." << endl
 		 << "5. Edit patient's phone number." << endl
 		 << "6. Edit patient's e-mail." << endl
-		 << "7. Edit patient's care card number." << endl
-		 << "8. Stop editing patient." << endl;
+		 << "7. Stop editing patient." << endl;
 }
 
 string getLegalCareCard(){
