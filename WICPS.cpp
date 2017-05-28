@@ -14,12 +14,13 @@ void displayEditOptions();
 bool doEditOptions(int userChoice, Patient& patient);
 string getPatientInput(string prompt);
 string getLegalCareCard();
+bool removePatient(List& registry);
+void searchForPatient(List& registry);
 
 //CURRENTLY NEEDS TO BE COMPILED USING C++ 11 (g++ --std=c++11 WICPS.cpp) BECAUSE OF stoi()!
 
 int main(){
 	runRegistry();
-	
 	return 0; 
 }
 
@@ -27,7 +28,7 @@ void runRegistry(){
 	List patientRegistry;
 	cout << "Welcome to the Walk-In Clinic Patient System!" << endl;
 	cout << "Please proceed by entering one of the following main option numbers: " << endl;
-		displayMainOptions();
+	displayMainOptions();
 		 
 	bool runMainMenu = true;
 	while(runMainMenu){
@@ -120,6 +121,8 @@ bool doMainOption(int userChoice, List& registry){
 		EXIT
 	};
 
+	bool patientRemoved = false;
+
 	switch(userChoice){
 		case e_choices::DISPLAY_OPTIONS:
 			displayMainOptions();
@@ -131,10 +134,15 @@ bool doMainOption(int userChoice, List& registry){
 			enterPatient(registry);
 			return true;
 		case e_choices::REMOVE_PATIENT:
-			cout << "Chose 4" << endl;
+			patientRemoved = removePatient(registry);
+			if(patientRemoved){
+				cout << "Patient was removed." << endl;
+			} else {
+				cout << "Target patient was not found in registry." << endl;
+			}
 			return true;
 		case e_choices::SEARCH_PATIENT:
-			cout << "Chose 5" << endl;
+			searchForPatient(registry);
 			return true;
 		case e_choices::EDIT_PATIENT:
 			cout << "Chose 6" << endl;
@@ -313,5 +321,29 @@ string getLegalCareCard(){
 		if(legalEntry){
 			return userInput;
 		}
+	}
+}
+
+bool removePatient(List& registry){
+	cout << "Please enter the care card number of the patient you would like to remove from the registry: ";
+	string targetCard = getLegalCareCard();
+	Patient targetPatient(targetCard);
+
+	return registry.remove(targetPatient);
+}
+
+void searchForPatient(List& registry){
+	cout << "Please enter the care card number of the patient you are looking for: ";
+	string targetCard = getLegalCareCard();
+
+	Patient tempPatient(targetCard);
+	Patient* targetPatient = registry.search(tempPatient);
+
+	if(targetPatient != NULL){
+		cout << endl << "Here is the information of the patient you were searching for: " << endl;
+		tempPatient = *targetPatient;
+		tempPatient.printPatient();
+	} else {
+		cout << "No patient found in registry with care card number " << targetCard << "." << endl;
 	}
 }
