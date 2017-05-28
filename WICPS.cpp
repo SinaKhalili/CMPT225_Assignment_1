@@ -16,8 +16,13 @@ string getPatientInput(string prompt);
 string getLegalCareCard();
 bool removePatient(List& registry);
 void searchForPatient(List& registry);
+void getPatientToEdit(List& registry);
 
 //CURRENTLY NEEDS TO BE COMPILED USING C++ 11 (g++ --std=c++11 WICPS.cpp) BECAUSE OF stoi()!
+//Known bugs:
+//-Patient info can only be one word long, probably fixable using getline()
+//-When there are three patients registered, and you try to remove the second, the program crashes
+//-Might have to define our own version of stoi() if prof's test drivers don't use c++11; e-mailed her on this
 
 int main(){
 	runRegistry();
@@ -145,7 +150,7 @@ bool doMainOption(int userChoice, List& registry){
 			searchForPatient(registry);
 			return true;
 		case e_choices::EDIT_PATIENT:
-			cout << "Chose 6" << endl;
+			getPatientToEdit(registry);
 			return true;
 		case e_choices::EXIT:
 			cout << "Stay healthy!" << endl;
@@ -205,7 +210,7 @@ void enterPatient(List& registry){
 void editPatient(Patient& patient){
 	bool editing = true;
 
-	cout << "You are now editing the following patient: " << endl;
+	cout << endl << "You are now editing the following patient: " << endl;
 	patient.printPatient();
 	cout << endl << "You have the following options: " << endl;
 	displayEditOptions();
@@ -325,7 +330,7 @@ string getLegalCareCard(){
 }
 
 bool removePatient(List& registry){
-	cout << "Please enter the care card number of the patient you would like to remove from the registry: ";
+	cout << endl << "Please enter the care card number of the patient you would like to remove from the registry: ";
 	string targetCard = getLegalCareCard();
 	Patient targetPatient(targetCard);
 
@@ -333,7 +338,7 @@ bool removePatient(List& registry){
 }
 
 void searchForPatient(List& registry){
-	cout << "Please enter the care card number of the patient you are looking for: ";
+	cout << endl << "Please enter the care card number of the patient you are looking for: ";
 	string targetCard = getLegalCareCard();
 
 	Patient tempPatient(targetCard);
@@ -343,6 +348,20 @@ void searchForPatient(List& registry){
 		cout << endl << "Here is the information of the patient you were searching for: " << endl;
 		tempPatient = *targetPatient;
 		tempPatient.printPatient();
+	} else {
+		cout << "No patient found in registry with care card number " << targetCard << "." << endl;
+	}
+}
+
+void getPatientToEdit(List& registry){
+	cout << endl << "Please enter the care card number of the patient you would like to edit: ";
+	string targetCard = getLegalCareCard();
+
+	Patient tempPatient(targetCard);
+	Patient* targetPatient = registry.search(tempPatient);
+
+	if(targetPatient != NULL){
+		editPatient(*targetPatient);
 	} else {
 		cout << "No patient found in registry with care card number " << targetCard << "." << endl;
 	}
