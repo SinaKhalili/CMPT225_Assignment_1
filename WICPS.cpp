@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include "Patient.cpp"
 #include "List.cpp"
 using namespace std;
@@ -75,14 +76,35 @@ int getChoice(int numberOfOptions){ //NEEDS TO BE COMPILED USING C++ 11 (g++ --s
 		bool oneCharacter = (userInput.length() == LENGTH_OF_A_DIGIT);
 		if(!oneCharacter){ 
 			legalOption = false;
-			promptMessage = "Please enter a single digit from 1 to ";
+				promptMessage = "Choose an option from 1 to ";
+
+				//numberOfOptions          // string which will contain the result
+
+				ostringstream convert;   // stream used for the conversion
+
+				convert << numberOfOptions;      // insert the textual representation of 'Number' in the characters in the stream
+
+				promptMessage += convert.str(); // set 'Result' to the contents of the stream(numberOfOptions);
+				
+				promptMessage += ".";
+			/*promptMessage = "Please enter a single digit from 1 to ";
 			promptMessage += to_string(numberOfOptions);
-			promptMessage += ".";
+			promptMessage += ".";*/
 		}
 
 		if(legalOption){ //If the user input is at least a single character, we check if it's an integer
 			try{
-				int test = stoi(userInput, nullptr);
+				
+
+				int test;          //number which will contain the result
+
+				istringstream convert(userInput); // stringstream used for the conversion constructed with the contents of 'Text' 
+                             // ie: the stream will start containing the characters of 'Text'
+
+				convert >> test; //give the value to 'Result' using the characters in the stream
+    			
+				
+				//int test = stoi(userInput, nullptr);
 			}
 			catch(...){
 				legalOption = false;
@@ -94,12 +116,27 @@ int getChoice(int numberOfOptions){ //NEEDS TO BE COMPILED USING C++ 11 (g++ --s
 		const int MIN_OPTION = 1;
 		const int MAX_OPTION = numberOfOptions;
 		if(legalOption){ //Finally, we check if the user's number is within the range of provided options
-			int userNumber = stoi(userInput, nullptr);
+			int userNumber;          //number which will contain the result
+
+				istringstream convert(userInput); // stringstream used for the conversion constructed with the contents of 'Text' 
+                             // ie: the stream will start containing the characters of 'Text'
+
+				convert >> userNumber; //give the value to 'Result' using the characters in the stream
+
+			//int userNumber = stoi(userInput, nullptr);
 			bool legalRange = (userNumber >= MIN_OPTION && userNumber <= MAX_OPTION);
 			if(!legalRange){
 				legalOption = false;
 				promptMessage = "Choose an option from 1 to ";
-				promptMessage += to_string(numberOfOptions);
+
+				//numberOfOptions          // string which will contain the result
+
+				ostringstream convert;   // stream used for the conversion
+
+				convert << numberOfOptions;      // insert the textual representation of 'Number' in the characters in the stream
+
+				promptMessage += convert.str(); // set 'Result' to the contents of the stream(numberOfOptions);
+				
 				promptMessage += ".";
 			}
 		}
@@ -111,7 +148,13 @@ int getChoice(int numberOfOptions){ //NEEDS TO BE COMPILED USING C++ 11 (g++ --s
 		}
 	}
 
-	return stoi(userInput, nullptr);
+				int returnNumber;          //number which will contain the result
+
+				istringstream convert(userInput); // stringstream used for the conversion constructed with the contents of 'Text' 
+                             // ie: the stream will start containing the characters of 'Text'
+
+				convert >> returnNumber;
+	return returnNumber;
 }
 
 bool doMainOption(int userChoice, List& registry){

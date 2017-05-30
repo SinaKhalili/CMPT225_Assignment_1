@@ -79,8 +79,29 @@ void List::printList(){
 		cout << "No patients registered." << endl;
 	} else {
 
+		//----------NOW WE WILL SORT THE LIST --------------------------------------------
+
+      	bool swapped = true;
+      	int j = 0;
+      	Patient tmp;
+      	while (swapped) {
+            	swapped = false;
+            	j++;
+            	for (int i = 0; i < elementCount - j; ++i) {
+                  	if (elements[i].getCareCard() > elements[i+1].getCareCard()) {
+                        	tmp = elements[i];
+                        	elements[i] = elements[i+1];
+                        	elements[i+1] = tmp;
+                    	    swapped = true;
+            		      }
+        		    }
+    		  }
+	}
+
+
+		//------------NOW THAT WE HAVE SORTED THE LIST, WE SHALL PRINT IT------------------
+
 		for(int i = 0; i < elementCount; ++i){
 			elements[i].printPatient();
 		}
-	}
 }
