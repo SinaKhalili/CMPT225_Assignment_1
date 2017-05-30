@@ -172,16 +172,16 @@ bool doMainOption(int userChoice, List& registry){
 	bool patientRemoved = false;
 
 	switch(userChoice){
-		case e_choices::DISPLAY_OPTIONS:
+		case DISPLAY_OPTIONS:
 			displayMainOptions();
 			return true;
-		case e_choices::DISPLAY_PATIENTS:
+		case DISPLAY_PATIENTS:
 			displayPatients(registry);
 			return true;
-		case e_choices::ENTER_PATIENT:
+		case ENTER_PATIENT:
 			enterPatient(registry);
 			return true;
-		case e_choices::REMOVE_PATIENT:
+		case REMOVE_PATIENT:
 			patientRemoved = removePatient(registry);
 			if(patientRemoved){
 				cout << "Patient was removed." << endl;
@@ -189,13 +189,13 @@ bool doMainOption(int userChoice, List& registry){
 				cout << "Target patient was not found in registry." << endl;
 			}
 			return true;
-		case e_choices::SEARCH_PATIENT:
+		case SEARCH_PATIENT:
 			searchForPatient(registry);
 			return true;
-		case e_choices::EDIT_PATIENT:
+		case EDIT_PATIENT:
 			getPatientToEdit(registry);
 			return true;
-		case e_choices::EXIT:
+		case EXIT:
 			cout << "Stay healthy!" << endl;
 			return false;
 	}
@@ -286,29 +286,29 @@ bool doEditOptions(int userChoice, Patient& patient){
 	string newEmail = "Nothing entered";
 
 	switch(userChoice){
-		case e_options::DISPLAY_OPTIONS:
+		case DISPLAY_OPTIONS:
 			displayEditOptions();
 			return true;
-		case e_options::DISPLAY_PATIENT:
+		case DISPLAY_PATIENT:
 			patient.printPatient();
 			return true;
-		case e_options::EDIT_NAME: // need to use getline()
+		case EDIT_NAME: // need to use getline()
 			newName = getPatientInput("Please enter the patient's name: ");
 			patient.setName(newName);
 			return true;
-		case e_options::EDIT_ADDRESS: // need to use getline()
+		case EDIT_ADDRESS: // need to use getline()
 			newAddress = getPatientInput("Please enter the patient's address: ");
 			patient.setAddress(newAddress);
 			return true;
-		case e_options::EDIT_PHONE:
+		case EDIT_PHONE:
 			newPhone = getPatientInput("Please enter the patient's phone number: ");
 			patient.setPhone(newPhone);
 			return true;
-		case e_options::EDIT_EMAIL:
+		case EDIT_EMAIL:
 			newEmail = getPatientInput("Please enter the patient's e-mail: ");
 			patient.setEmail(newEmail);
 			return true;
-		case e_options::STOP_EDITING:
+		case STOP_EDITING:
 			return false;
 	}
 

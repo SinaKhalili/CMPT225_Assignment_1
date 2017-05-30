@@ -42,7 +42,7 @@ bool List::remove(const Patient& toBeRemoved){
 	for(int i = 0; i < elementCount; ++i){
 		if(elements[i] == toBeRemoved){ //If target element exists in the list
 			
-			for(int ii = i; ii < elementCount; ++ii){ 
+			for(int ii = i; ii < elementCount-1; ++ii){ 
 				elements[ii] = elements[ii + 1];
 			}
 
