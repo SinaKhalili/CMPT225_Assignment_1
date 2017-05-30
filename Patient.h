@@ -7,7 +7,7 @@
  *                  This care card number cannot be modified. 
  *
  * Last modified on: May 2017
- * Author: AL
+ * Authors: Sina Khalili and Pierce Carruthers
  */
 
 #pragma once

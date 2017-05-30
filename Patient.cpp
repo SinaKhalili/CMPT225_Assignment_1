@@ -1,3 +1,13 @@
+/*
+ * Patient.c
+ * 
+ * Class Description: Method implemenation of Patient.h, which models a walk-in clinic patient.
+ * Class Invariant: Operators and getters do not affect the Patient objects.
+ *
+ * Last modified on: May 2017
+ * Authors: Sina Khalili and Pierce Carruthers
+ */
+
 #pragma once
 #include <string>
 #include "Patient.h"

@@ -4,10 +4,11 @@
  * Class Description: List data collection ADT.
  * Class Invariant: Data collection with the following characteristics:
  *                   - Each element is unique (no duplicates).
- *                   - (What other characteristic does our List have?)
- *
+ *                   - The list has no more elements than the alloted capacity
+ *					 - We cannot remove from an empty list
+ * 					 - We cannot add to a full list
  * Last modified on: May 2017
- * Author: AL
+ * Authors: Pierce Carruthers and Sina Khalili
  */
 
 #pragma once

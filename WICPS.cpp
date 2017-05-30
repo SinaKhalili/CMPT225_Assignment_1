@@ -1,3 +1,14 @@
+/*
+ * WICPS.cpp
+ * 
+ * Class Description: Implementation/interface of the walk in clinic system. 
+ * The idea is that any receptionist can sit down at her computer and run this program.
+ * 
+ * Class Invariant: Operators and getters do not affect the Patient objects.
+ *
+ * Last modified on: May 2017
+ * Authors: Sina Khalili and Pierce Carruthers
+ */
 #include <iostream>
 #include <sstream>
 #include "Patient.cpp"
@@ -284,6 +295,8 @@ bool doEditOptions(int userChoice, Patient& patient){
 	string newAddress = "Nothing entered";
 	string newPhone = "Nothing entered";
 	string newEmail = "Nothing entered";
+				string ABrandnewName = "";
+
 
 	switch(userChoice){
 		case DISPLAY_OPTIONS:
@@ -293,11 +306,15 @@ bool doEditOptions(int userChoice, Patient& patient){
 			patient.printPatient();
 			return true;
 		case EDIT_NAME: // need to use getline()
-			newName = getPatientInput("Please enter the patient's name: ");
-			patient.setName(newName);
+			cout << "Please enter the patient's name: " << endl;
+			cin.ignore();
+			getline(cin, newName);
+			patient.setAddress(newName);
 			return true;
 		case EDIT_ADDRESS: // need to use getline()
-			newAddress = getPatientInput("Please enter the patient's address: ");
+			cout << "Please enter the patient's address: " << endl;
+			cin.ignore();
+			getline(cin, newAddress);
 			patient.setAddress(newAddress);
 			return true;
 		case EDIT_PHONE:
